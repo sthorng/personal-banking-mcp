@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>Privacy notice — Personal Banking MCP</title><style>body{font:18px/1.65 system-ui,sans-serif;max-width:740px;margin:48px auto;padding:0 24px;color:#18212b;background:#fff}h1{font-size:2rem;line-height:1.2}h2{font-size:1.2rem;margin-top:2rem}a{color:#175da6}nav,footer{font-size:.9rem}footer{border-top:1px solid #ddd;margin-top:40px;padding-top:20px}</style></head>
+<body><nav aria-label="Documents"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></nav><main><h1>Privacy notice</h1>
+<p>Personal Banking MCP is a private, single-user project maintained by the GitHub user <a href="https://github.com/sthorng">sthorng</a>. It is intended to query only the operator’s own bank accounts. It does not accept customers or offer a public banking service.</p>
+<h2>Current status</h2>
+<p>The current implementation uses synthetic bank data. Live banking access is not yet enabled. The following describes the intended handling of data when that integration is activated; these documents do not imply that a bank connection already exists.</p>
+<h2>Account data and purpose</h2>
+<p>After the operator grants read-only bank consent, the service is intended to retrieve account identifiers, account names, currencies, balances and transactions to answer the operator’s requests and calculate cash-flow summaries. The service does not initiate payments.</p>
+<h2>Storage and access</h2>
+<p>Balances and transaction history are not written to a database or other persistent application storage. They are held in a bounded, temporary memory cache. Default cache lifetimes are 60 seconds for balances and five minutes for transaction pages; the operator can configure them. Expired entries are removed on subsequent cache activity; process shutdown clears memory. Bank authorization changes must invalidate cached data.</p>
+<p>Provider signing keys and authorization/session secrets must be secured separately from the data cache. The service does not collect or store bank login credentials. Remote access must be authenticated and restricted to the operator. Application logs must not contain credentials, balances, transaction details or request bodies.</p>
+<h2>External services</h2>
+<p>Enable Banking is the selected account-information provider. Bank authentication and consent occur through the provider and the bank. Their own data handling and retention rules apply; see <a href="https://enablebanking.com/privacy">Enable Banking’s privacy notice</a>. The application’s temporary cache does not control upstream retention.</p>
+<p>If the operator connects an AI assistant such as ChatGPT, tool responses containing requested account data will be shared with that assistant’s provider and handled under its policies and account settings. This is separate from the service’s own cache.</p>
+<p>These static documents are hosted on GitHub Pages. GitHub handles hosting-related request information under its own <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">privacy statement</a>. The documents include no application analytics, forms, scripts or banking access.</p>
+<h2>Control and contact</h2>
+<p>The operator can stop the service, clear its cache and revoke bank consent through the bank or provider. Revoking consent does not itself delete information already handled by external services; their controls apply. For project contact, use the contact options published on <a href="https://github.com/sthorng">the maintainer’s GitHub profile</a>. Do not post bank details, credentials or other private financial information in public issues.</p></main><footer>Last updated: 30 October 2026</footer></body>
+</html>
